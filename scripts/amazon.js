@@ -85,7 +85,7 @@ products.forEach((product)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id = "${product.id}">
             Add to Cart
           </button>
         </div>
@@ -93,6 +93,49 @@ products.forEach((product)=>{
     
 
 })
-console.log(productsHTML);
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart')
+.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        const productId = button.dataset.productId;
+        let matchingItem;
+
+        cart.forEach((item)=>{
+            if(productId == item.productId){
+                matchingItem = item;
+
+            }
+        })
+
+        if(matchingItem){ //turly value ie it is true if the matchingItem is not null
+            matchingItem.quantity += 1;
+        }else{
+            cart.push({
+                productId:productId,
+                quantity:1
+            });
+            
+        }
+        
+        console.log(cart);
+        
+    });
+});
+
+//main idea of javascript 
+//save the data
+//generate the html
+// make it interactive
+// make it interactive
+
+//How do we know which product to add
+//using data attribute
+//it is just another HTML attribute
+//allow us to attach data to elements
+
+//Quantity operation
+//check if the product is alredy in cart
+//if yes, increase the quantity
+//if no add to cart
