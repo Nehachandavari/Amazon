@@ -118,8 +118,17 @@ document.querySelectorAll('.js-add-to-cart')
             });
             
         }
+
+        let cartQuantity = 0;
+        cart.forEach((item)=>{
+            cartQuantity += item.quantity;
+
+        })
+         
+        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
         
-        console.log(cart);
+        // console.log(cart);
+        // console.log(cartQuantity);
         
     });
 });
@@ -139,3 +148,7 @@ document.querySelectorAll('.js-add-to-cart')
 //check if the product is alredy in cart
 //if yes, increase the quantity
 //if no add to cart
+
+//cart quantity icon interactive
+//calculate the quantity
+//put it on the page
